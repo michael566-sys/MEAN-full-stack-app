@@ -1,11 +1,15 @@
 import { NgModule, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing-module';
-import { App } from './app.component';
+import { AppComponent } from './app.component';
+import { PostCreateComponent } from './posts/post-create/post-create.component';
 
 @NgModule({
   declarations: [
-    App
+    AppComponent,
+    PostCreateComponent 
+    // register the new PostCreateComponent to link the component class 
+    // with html template
   ],
   imports: [
     BrowserModule,
@@ -15,6 +19,6 @@ import { App } from './app.component';
     provideBrowserGlobalErrorListeners(),
     provideClientHydration(),
   ],
-  bootstrap: [App]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

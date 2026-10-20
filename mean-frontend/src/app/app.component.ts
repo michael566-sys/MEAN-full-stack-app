@@ -6,6 +6,8 @@ import { Component, signal } from '@angular/core';
   styleUrl: './app.component.css',
   templateUrl: './app.component.html',
 })
-export class App {
+
+// rename the base component to standardize
+export class AppComponent {
   protected readonly title = signal('mean-course');
 }
