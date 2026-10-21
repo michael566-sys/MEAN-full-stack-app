@@ -10,5 +10,7 @@ import { Component } from "@angular/core"; // angular scans for certain features
   // NgModule: delare module and import give every component in it access to other moduldes, directives, and pipes
 }) 
 export class PostCreateComponent {
-
+  onAddPost() {
+    alert('Post added!')
+  }
 }
