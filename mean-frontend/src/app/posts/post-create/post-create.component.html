@@ -1,6 +1,13 @@
 <!-- template 
  <h1>post create component</h1> -->
-<textarea rows="6"></textarea>
+
+ <!-- two ways of outputting data -->
+ <!-- way 1. property binding -->
+<textarea rows="6" [value]="newPost"></textarea>
 <hr>
 <!-- event listener is click -->
 <button (click)="onAddPost()">Save Post</button> 
+
+<!-- output the content that user has entered -->
+ <!-- way 2. use string interpolation to output content -->
+ <p>{{ newPost }}</p> 
