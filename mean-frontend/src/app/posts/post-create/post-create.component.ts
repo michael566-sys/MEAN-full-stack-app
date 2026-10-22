@@ -10,10 +10,12 @@ import { Component } from "@angular/core"; // angular scans for certain features
   // NgModule: delare module and import give every component in it access to other moduldes, directives, and pipes
 }) 
 export class PostCreateComponent {
+  enteredValue = '';
   newPost = '';
 
-  onAddPost() {
-    this.newPost = 'The user\'s post';
+  onAddPost(postInput: HTMLTextAreaElement) {
+    console.dir(postInput);
+    this.newPost = this.enteredValue//postInput.value;
     alert('Post added!')
   }
 }
