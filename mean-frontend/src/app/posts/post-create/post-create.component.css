@@ -1,0 +1,14 @@
+mat-card { /* target mat-card element from html*/
+  width: 80%;
+  margin: auto
+}
+
+.save-btn {
+  --mat-button-filled-container-color: red;
+  --mat-button-filled-label-text-color: white;
+}
+
+mat-form-field,
+textarea {
+  width: 100%;
+}

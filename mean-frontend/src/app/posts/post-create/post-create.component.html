@@ -1,9 +1,12 @@
+  
+
 <!-- template 
  <h1>post create component</h1> -->
 
  <!-- two ways of outputting data -->
  <!-- way 1. property binding -->
-<textarea rows="6" [value]="newPost" #postInput></textarea> 
+
+<textarea matInput rows="6" [value]="newPost" #postInput></textarea> 
 <!-- use post input to read input data -->
 <hr>
 <!-- event listener is click -->
@@ -18,5 +21,12 @@
 <!-- ngmodel directive instruction placed on html element -->
 <textarea rows="6" [(ngModel)]="enteredValue"></textarea> 
 <hr>
-<button (click)="onAddPost(postInput)">Save Post</button> 
-
+<mat-card>
+  <mat-form-field>
+    <textarea matInput rows="6" [value]="newPost" #postInput></textarea> 
+  </mat-form-field>
+  <button  
+    matButton="filled"
+    class="save-btn"
+    (click)="onAddPost(postInput)">Save Post</button> 
+</mat-card>
