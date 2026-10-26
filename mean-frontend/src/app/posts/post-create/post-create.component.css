@@ -3,12 +3,34 @@ mat-card { /* target mat-card element from html*/
   margin: auto
 }
 
+/* .save-btn is a class selector: it matches the element with class="save-btn"
+   in the html (the Save Post button inside mat-card).
+   The --mat-button-... values are Angular Material CSS variables (design tokens);
+   overriding them changes the filled button's background to red and its text to white. */
 .save-btn {
   --mat-button-filled-container-color: red;
   --mat-button-filled-label-text-color: white;
 }
 
+/* :host is an Angular pseudo-class that targets the component's own element,
+   i.e. <app-post-create> itself (not anything inside its template).
+   Angular custom elements are display:inline by default, so display:block makes it
+   a normal block box. box-sizing: border-box makes the padding count inside
+   the element's width instead of adding to it. */
+:host {
+  display: block;
+  /* padding = empty space inside the element, between its border and its content.
+     Two-value shorthand: first value = top & bottom (0 = none),
+     second value = left & right (1rem = one root font size, ~16px).
+     So the content stays ~16px away from the left/right browser edges. */
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+/* make the form field and textareas fill their container's width;
+   border-box keeps the textarea's border/padding inside that 100% so it doesn't overflow */
 mat-form-field,
 textarea {
   width: 100%;
+  box-sizing: border-box;
 }
