@@ -1,8 +1,21 @@
-<mat-accordion>
-  <mat-expansion-panel>
+<!-- the entire section will be rendered only if ngIf is true -->
+<mat-accordion multi="true" *ngIf="posts.length > 0"> <!-- multi is true allow expansion of more than 1 post at a time -->>
+  <!-- structural directives are instructions place on elements
+  1. instruction like ng model applies to a single element
+  2. structural instruitons structurally changes the html code 
+    ng for looping through posts to get each post
+  -->
+  <mat-expansion-panel *ngFor="let post of posts">
     <mat-expansion-panel-header>
-      The expansion title!
+      <!-- The expansion title! -->
+      <!-- No null check needed: Post.title is typed as string (not nullable), and ngFor never
+           yields a null post. Interpolation also renders null/undefined as empty text instead
+           of throwing. If title became optional (title?: string), type-check with post.title ?? '' -->
+       {{ post.title }}
     </mat-expansion-panel-header>
-    <p>I'm in an expansion panel!</p>
+    <!-- <p>I'm in an expansion panel!</p> -->
+     <!-- same as title: Post.content is a non-nullable string, so no null check is needed -->
+     <p>{{ post.content }}</p>
   </mat-expansion-panel>
 </mat-accordion>
+<p class="info-text mat-body-1" *ngIf="posts.length <= 0">No posts added yet!</p>

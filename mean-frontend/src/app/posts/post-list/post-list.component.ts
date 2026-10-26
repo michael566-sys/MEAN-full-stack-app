@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Post } from "../post.model";
 
 /* @Component is a decorator: it sits on top of a class and tells Angular
    "this class is a component", not just a plain TypeScript class.
@@ -18,10 +19,14 @@ import { Component } from "@angular/core";
    `export` lets other files import it, e.g. app-module.ts to register it. */
 export class PostListComponent {
    // add posts to the post list
-   posts = [
-      { title: 'First Post', content: "This is the first post's content" },
-      { title: 'Second Post', content: "This is the second post's content" },
-      { title: 'Third Post', content: "This is the third post's content" }
-   ];
-   
+   // posts = [
+   //    { title: 'First Post', content: "This is the first post's content" },
+   //    { title: 'Second Post', content: "This is the second post's content" },
+   //    { title: 'Third Post', content: "This is the third post's content" }
+   // ];
+   // this post list might be fetched from back end, so we don't know in advance how many elements I need
+   // need something dynamically looping it 
+
+   // now we want to receive the posts from create post component
+   posts: Post[] = [];
 }
