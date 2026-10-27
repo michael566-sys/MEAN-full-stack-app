@@ -1,33 +1,37 @@
-  
-
 <!-- template 
  <h1>post create component</h1> -->
 
  <!-- two ways of outputting data -->
  <!-- way 1. property binding -->
 
-<textarea matInput rows="6" [value]="newPost" #postInput></textarea> 
+<!-- <textarea matInput rows="6" [value]="newPost" #postInput></textarea>  -->
 <!-- use post input to read input data -->
-<hr>
+<!-- <hr> -->
 <!-- event listener is click -->
-<button (click)="onAddPost(postInput)">Save Post</button> 
+<!-- <button (click)="onAddPost(postInput)">Save Post</button>  -->
 
 <!-- output the content that user has entered -->
  <!-- way 2. use string interpolation to output content -->
- <p>{{ newPost }}</p> 
+ <!-- <p>{{ newPost }}</p> 
 
-<hr>
+<hr> -->
 
 <!-- ngmodel directive instruction placed on html element -->
-<textarea rows="6" [(ngModel)]="enteredValue"></textarea> 
-<hr>
+<!-- <textarea rows="6" [(ngModel)]="enteredValue"></textarea> 
+<hr> -->
 <mat-card>
+  <!-- add a post  -->
   <mat-form-field>
-    <textarea matInput rows="6" [value]="newPost" #postInput></textarea> 
+    <input matInput type="text" [(ngModel)]="enteredTitle">
+  </mat-form-field>
+  <mat-form-field>
+    <!-- <textarea matInput rows="6" [value]="newPost" #postInput></textarea>  -->
+    <textarea matInput rows="6" [(ngModel)]="enteredContent"></textarea> 
   </mat-form-field>
   <button  
     matButton="filled"
     color="accent"
     class="save-btn"
-    (click)="onAddPost(postInput)">Save Post</button> 
+    /* (click)="onAddPost(postInput)">Save Post</button>  */
+    (click)="onAddPost()">Save Post</button> 
 </mat-card>

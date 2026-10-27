@@ -1,4 +1,4 @@
-import { Component } from "@angular/core"; // angular scans for certain features
+import { Component, EventEmitter, Output } from "@angular/core"; // angular scans for certain features
 
 //
 @Component({ // component decorator
@@ -11,12 +11,27 @@ import { Component } from "@angular/core"; // angular scans for certain features
   styleUrls: [ './post-create.component.css' ]
 }) 
 export class PostCreateComponent {
-  enteredValue = ''; 
-  newPost = '';
+  // enteredValue = ''; 
+  // newPost = '';
 
-  onAddPost(postInput: HTMLTextAreaElement) {
-    console.dir(postInput);
-    this.newPost = this.enteredValue//postInput.value;
-    alert('Post added!')
+  // // onAddPost(postInput: HTMLTextAreaElement) { 
+  // //   console.dir(postInput);
+  // //   this.newPost = this.enteredValue//postInput.value;
+  // //   alert('Post added!')
+  // // }
+
+  // add posts
+  enteredTitle = "";
+  enteredContent = "";
+  // 
+  @Output() postCreated = new EventEmitter();
+
+  onAddPost() { 
+    const post = { 
+      title: this.enteredTitle, 
+      content: this.enteredContent 
+    };
+    this.postCreated.emit(post); // emit new event, pass post as argument
+    console.log(`posts created: ${post.title}, ${post.content}`);
   }
 }

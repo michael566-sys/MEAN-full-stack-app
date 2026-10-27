@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 import { Post } from "../post.model";
 
 /* @Component is a decorator: it sits on top of a class and tells Angular
@@ -12,6 +12,9 @@ import { Post } from "../post.model";
   // false = not self-contained; it must be declared in an NgModule's `declarations` array
   // (e.g. app-module.ts) before Angular recognises <app-post-list>
   standalone: false,
+  // `Eager` is the old `Default` behaviour, so the list re-checks every time and sees the pushed item.
+  // (Angular 22 components are OnPush by default, which ignores push() because the array reference is unchanged.)
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: [ './post-list.component.css' ]
 })
 /* A normal TypeScript class that holds the component's data and logic
@@ -28,5 +31,9 @@ export class PostListComponent {
    // need something dynamically looping it 
 
    // now we want to receive the posts from create post component
-   posts: Post[] = [];
+   @Input() posts: Post[] = [];
+   ngOnChanges() {
+      console.log(`posts lists: ${this.posts}`);
+   }
+   // bind posts from outside only for the 
 }
