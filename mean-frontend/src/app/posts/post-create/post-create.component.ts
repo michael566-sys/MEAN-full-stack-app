@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from "@angular/core"; // angular scans for certain features
 import { Post } from '../post.model';
+import { NgForm } from '@angular/forms';
 //
 @Component({ // component decorator
   selector: 'app-post-create',// selector can use the component
@@ -30,6 +31,18 @@ export class PostCreateComponent {
   onAddPost() { 
     const post: Post = {  // type Post
       title: this.enteredTitle, 
+      content: this.enteredContent 
+    };
+    this.postCreated.emit(post); // emit new event, pass post as argument
+    console.log(`posts created: ${post.title}, ${post.content}`);
+  }
+
+  onAddPosts(form: NgForm) { 
+    if (form.invalid) {
+      return;
+    }
+    const post: Post = {  // type Post
+      title: form.value.title,
       content: this.enteredContent 
     };
     this.postCreated.emit(post); // emit new event, pass post as argument
