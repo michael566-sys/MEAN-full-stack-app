@@ -10,7 +10,8 @@
    - If methods are needed later, switch to a class (and map JSON into instances).
    If the API shape differs from the UI shape (e.g. Mongo's _id), add a separate DTO
    interface and map it to this one in the service. */
-export interface Post {
+// interface can't be instantiate, and only a contract
+export interface Post { 
   title: string;
-  content: string;
+  content: string; // we need to have clear definition on how a post is
 }

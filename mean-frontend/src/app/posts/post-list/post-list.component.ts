@@ -31,7 +31,7 @@ export class PostListComponent {
    // need something dynamically looping it 
 
    // now we want to receive the posts from create post component
-   @Input() posts: Post[] = [];
+   @Input() posts: Post[] = []; // type of Post[]
    ngOnChanges() {
       console.log(`posts lists: ${this.posts}`);
    }

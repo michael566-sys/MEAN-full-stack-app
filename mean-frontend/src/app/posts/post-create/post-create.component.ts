@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from "@angular/core"; // angular scans for certain features
-
+import { Post } from '../post.model';
 //
 @Component({ // component decorator
   selector: 'app-post-create',// selector can use the component
@@ -24,10 +24,11 @@ export class PostCreateComponent {
   enteredTitle = "";
   enteredContent = "";
   // 
-  @Output() postCreated = new EventEmitter();
+  @Output() postCreated = new EventEmitter<Post>(); // data we emit wll be a Post
+  // if we emit something else, it will emit error
 
   onAddPost() { 
-    const post = { 
+    const post: Post = {  // type Post
       title: this.enteredTitle, 
       content: this.enteredContent 
     };

@@ -10,7 +10,7 @@ import { Post } from './posts/post.model';
 // rename the base component to standardize
 export class AppComponent {
   // protected readonly title = signal('mean-course');
-  storedPosts: Post[] = [];   
+  storedPosts: Post[] = [];  // type is Post[]
   onPostAdded(post: Post) {
     /* push() mutates the existing array in place: storedPosts keeps the SAME reference.
        This only shows up in the UI because PostListComponent sets
