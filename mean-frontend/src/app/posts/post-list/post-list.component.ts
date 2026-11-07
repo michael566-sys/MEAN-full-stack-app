@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
 import { Post } from "../post.model";
-
+import { PostsService } from '../post-service';
 /* @Component is a decorator: it sits on top of a class and tells Angular
    "this class is a component", not just a plain TypeScript class.
    The object inside is the component's configuration. */
@@ -31,9 +31,21 @@ export class PostListComponent {
    // need something dynamically looping it 
 
    // now we want to receive the posts from create post component
-   @Input() posts: Post[] = []; // type of Post[]
-   ngOnChanges() {
-      console.log(`posts lists: ${this.posts}`);
-   }
+   // @Input() posts: Post[] = []; // type of Post[]
+   // ngOnChanges() {
+   //    console.log(`posts lists: ${this.posts}`);
+   // }
    // bind posts from outside only for the 
-}
+
+   @Input() posts: Post[] = [];
+   // dependency injection
+   // public key automatically create an new PostsSerice property in this component, and store the incoming value in the property
+   // which is equivalent to this line: 
+   /* 
+   postsService: PostsService;
+     constructor( postsService: PostsService) {
+      this.postsService = postsService;
+   }
+      */
+   constructor(public postsService: PostsService) {}
+} 
